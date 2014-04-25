@@ -1,7 +1,7 @@
 FROM ubuntu
 
 #RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe multiverse" > /etc/apt/sources.list && apt-get update
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y apt-cacher
+RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y apt-cacher
 
 # allow access from everywhere
 RUN echo "allowed_hosts = *" >> /etc/apt-cacher/apt-cacher.conf
