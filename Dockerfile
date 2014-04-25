@@ -16,7 +16,7 @@ RUN echo "distinct_namespaces = 1" >> /etc/apt-cacher/apt-cacher.conf
 # extend ubuntu release names (and keep adding future versions...)
 RUN echo "ubuntu_release_names = dapper, edgy, feisty, gutsy, hardy, intrepid, jaunty, karmic, lucid, maverick, natty, oneiric, precise, quantal, trusty, utopic" >> /etc/apt-cacher/apt-cacher.conf
 
-CMD apt-cacher
+CMD cron && apt-cacher
 
 EXPOSE 3142
 VOLUME ["/var/cache/apt-cacher"]
