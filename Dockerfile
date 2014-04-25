@@ -1,4 +1,4 @@
-FROM ubuntu:13.10
+FROM ubuntu
 
 #RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe multiverse" > /etc/apt/sources.list && apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y apt-cacher
