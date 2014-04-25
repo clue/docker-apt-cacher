@@ -13,9 +13,8 @@ RUN echo "allowed_hosts = *" >> /etc/apt-cacher/apt-cacher.conf
 # enable multi-distro support (debian and ubuntu alike)
 RUN echo "distinct_namespaces = 1" >> /etc/apt-cacher/apt-cacher.conf
 
-# extend ubuntu release names
-# TODO: add ubuntu 14.10 release name and future versions
-RUN echo "ubuntu_release_names = dapper, edgy, feisty, gutsy, hardy, intrepid, jaunty, karmic, lucid, maverick, natty, oneiric, precise, quantal, trusty" >> /etc/apt-cacher/apt-cacher.conf
+# extend ubuntu release names (and keep adding future versions...)
+RUN echo "ubuntu_release_names = dapper, edgy, feisty, gutsy, hardy, intrepid, jaunty, karmic, lucid, maverick, natty, oneiric, precise, quantal, trusty, utopic" >> /etc/apt-cacher/apt-cacher.conf
 
 CMD apt-cacher
 
