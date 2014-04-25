@@ -1,6 +1,8 @@
 # docker-apt-cacher
 
-A minimal docker installation of [psocksd](https://github.com/clue/psocksd) on Ubuntu base image.
+Downloading the same software packages for Debian/Ubuntu-based distributions for several machines in your network over and over again is slow and annoying.
+Using [apt-cacher](https://help.ubuntu.com/community/Apt-Cacher-Server) you can set up a central machine that caches the package files after the first download.
+This is a minimal docker image that eases setting up and maintaining your apt-cacher proxy server.
 
 ## Instructions
 
