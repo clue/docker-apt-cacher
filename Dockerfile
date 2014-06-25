@@ -15,9 +15,9 @@ RUN echo "allowed_hosts = *" >> /etc/apt-cacher/apt-cacher.conf
 RUN echo "distinct_namespaces = 1" >> /etc/apt-cacher/apt-cacher.conf
 
 # extend ubuntu release names (and keep adding future versions...)
-RUN echo "ubuntu_release_names = dapper, edgy, feisty, gutsy, hardy, intrepid, jaunty, karmic, lucid, maverick, natty, oneiric, precise, quantal, trusty, utopic, vivid" >> /etc/apt-cacher/apt-cacher.conf
+ENV UBUNTU_RELEASE_NAMES dapper, edgy, feisty, gutsy, hardy, intrepid, jaunty, karmic, lucid, maverick, natty, oneiric, precise, quantal, trusty, utopic, vivid
 
-CMD cron && apt-cacher
-
+ADD run.sh /
+CMD ["/run.sh"]
 EXPOSE 3142
 VOLUME ["/var/cache/apt-cacher"]
