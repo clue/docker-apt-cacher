@@ -1,8 +1,10 @@
 FROM ubuntu:trusty
 MAINTAINER Christian Lück <christian@lueck.tv>
 
-RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y \
-	apt-cacher
+RUN apt-get update \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+    apt-cacher \
+    && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
 
 # allow access from everywhere
 RUN echo "allowed_hosts = *" >> /etc/apt-cacher/apt-cacher.conf
