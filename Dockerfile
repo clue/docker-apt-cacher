@@ -1,8 +1,10 @@
-FROM ubuntu
+FROM ubuntu:trusty
 MAINTAINER Christian Lück <christian@lueck.tv>
 
-RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y \
-	apt-cacher
+RUN apt-get update \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+    apt-cacher \
+    && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
 
 # allow access from everywhere
 RUN echo "allowed_hosts = *" >> /etc/apt-cacher/apt-cacher.conf
@@ -18,6 +20,7 @@ RUN echo "distinct_namespaces = 1" >> /etc/apt-cacher/apt-cacher.conf
 ENV UBUNTU_RELEASE_NAMES dapper, edgy, feisty, gutsy, hardy, intrepid, jaunty, karmic, lucid, maverick, natty, oneiric, precise, quantal, trusty, utopic, vivid
 
 ADD run.sh /
-CMD ["/run.sh"]
+ENTRYPOINT ["/run.sh"]
+CMD []
 EXPOSE 3142
 VOLUME ["/var/cache/apt-cacher"]
