@@ -18,6 +18,13 @@ $ sudo docker build -t apt-cacher .
 $ sudo docker run -d -p 3142:3142 -t apt-cacher
 ```
 
+### Run in background with persistent cache
+
+```bash
+$ sudo mkdir /var/cache/apt-cacher
+$ sudo docker run -d -p 3142:3142 -v /var/cache/apt-cacher:/var/cache/apt-cacher -t apt-cacher
+```
+
 ### Configure your clients
 
 ```bash
