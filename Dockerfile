@@ -1,4 +1,4 @@
-FROM ubuntu:trusty
+FROM ubuntu:18.04
 MAINTAINER Christian Lück <christian@lueck.tv>
 
 RUN apt-get update \
@@ -10,14 +10,13 @@ RUN apt-get update \
 RUN echo "allowed_hosts = *" >> /etc/apt-cacher/apt-cacher.conf
 
 # limit disk usage
-# TODO: does not work as of now. Seems to interpret as 0 bytes maximum
-# RUN echo "disk_usage_limit = 10GB" > /etc/apt-cacher/conf.d/disk.conf
+RUN echo "disk_usage_limit = 10G" > /etc/apt-cacher/conf.d/disk.conf
 
 # enable multi-distro support (debian and ubuntu alike)
 RUN echo "distinct_namespaces = 1" >> /etc/apt-cacher/apt-cacher.conf
 
 # extend ubuntu release names (and keep adding future versions...)
-ENV UBUNTU_RELEASE_NAMES dapper, edgy, feisty, gutsy, hardy, intrepid, jaunty, karmic, lucid, maverick, natty, oneiric, precise, quantal, trusty, utopic, vivid
+ENV UBUNTU_RELEASE_NAMES dapper, edgy, feisty, gutsy, hardy, intrepid, jaunty, karmic, lucid, maverick, natty, oneiric, precise, quantal, raring, saucy, trusty, utopic, vivid, wily, xenial, yakkety, zesty, artful, bionic, cosmic
 
 ADD run.sh /
 ENTRYPOINT ["/run.sh"]
